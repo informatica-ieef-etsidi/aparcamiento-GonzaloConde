@@ -4,8 +4,8 @@
 
 void main() {
 
-	int i = 0;
-	char opcion, matricula[8], matricula2[8], plaza1 = 0, plaza2 = 0, opcion2, matricula3[8];
+	int i = 0, opcion2;
+	char opcion, matricula[8], matricula2[8], plaza1 = 0, plaza2 = 0, matricula3[8], opciontipo;
 
 	while (i == 0) {
 
@@ -16,7 +16,6 @@ void main() {
 		printf("Seleccione B para buscar un coche por su matricula\n");
 		printf("Seleccione S para salir del programa\n");
 		scanf_s("%c", &opcion, 1);
-		getchar();
 
 		system("cls");
 
@@ -25,23 +24,38 @@ void main() {
 		case 'R':
 		case 'r':
 			printf("Ha elegido reservar una plaza.\n");
+			printf("Moto (M) o coche (C)\n");
+			getchar();
+			scanf_s("%c", &opciontipo, 1);
 
-			if (plaza1 == 0) {
-				printf("Se le asigna la plaza 1\n");
-				printf("Introduzca la matricula de su vehiculo:\n");
-				scanf_s("%s", matricula, 8);
-				plaza1 = plaza1 + 1;
-				printf("Su plaza ha sido reservada\n");
-			}
-			else if (plaza2 == 0) {
-				printf("Se le asigna la plaza 2\n");
-				printf("Introduzca la matricula de su vehiculo:\n");
-				scanf_s("%s", matricula2, 8);
-				plaza2 = plaza2 + 1;
-				printf("Su plaza ha sido reservada\n");
-			}
-			else {
-				printf("No quedan plazas libres, vuelva mas tarde\n");
+			switch (opciontipo) {
+			case 'M':
+			case 'm':
+				if (plaza1 == 0) {
+					printf("Ha elegido plaza de moto. Se le asigna la plaza 1\n");
+					printf("Introduzca la matricula de su moto:\n");
+					scanf_s("%s", matricula, 8);
+					plaza1 = plaza1 + 1;
+					printf("Su plaza ha sido reservada\n");
+				}
+				else if (plaza1 == 1) {
+					printf("No hay plazas de moto libres. Vuelva mas tarde\n");
+				}
+				break;
+
+			case 'C':
+			case 'c':
+				if (plaza2 == 0) {
+					printf("Ha elegido plaza de coche. Se le asigna la plaza 2\n");
+					printf("Introduzca la matricula de su coche:\n");
+					scanf_s("%s", matricula2, 8);
+					plaza2 = plaza2 + 1;
+					printf("Su plaza ha sido reservada\n");
+				}
+				else if (plaza2 == 1) {
+					printf("No hay plazas de coche libres. Vuelva mas tarde\n");
+				}
+				break;
 			}
 			break;
 
@@ -52,14 +66,13 @@ void main() {
 			if (plaza1 == 0 && plaza2 == 0) {
 				printf("No hay plazas ocupadas.\n");
 			}
-
 			else {
 				printf("Elija la plaza que desea abandonar\n");
-				scanf_s("%c", &opcion2);
+				scanf_s("%d", &opcion2);
 
 				switch (opcion2) {
 
-				case '1':
+				case 1:
 					if (plaza1 == 0) {
 						printf("No hay ningun coche en la plaza 1.\n");
 					}
@@ -69,7 +82,7 @@ void main() {
 					}
 					break;
 
-				case '2':
+				case 2:
 					if (plaza2 == 0) {
 						printf("No hay ningun coche en la plaza 2.\n");
 					}
@@ -86,20 +99,20 @@ void main() {
 		case 'e':
 			printf("Ha elegido ver el estado del aparcamiento\n");
 			if (plaza1 == 0 && plaza2 == 0) {
-				printf("Plaza 1 - LIBRE\n");
-				printf("Plaza 2 - LIBRE\n");
+				printf("Plaza 1 (moto) - LIBRE\n");
+				printf("Plaza 2 (coche) - LIBRE\n");
 			}
 			else if (plaza1 == 1 && plaza2 == 0) {
-				printf("Plaza 1 - OCUPADA por %s\n", matricula);
-				printf("Plaza 2 - LIBRE\n");
+				printf("Plaza 1 (moto) - OCUPADA por %s\n", matricula);
+				printf("Plaza 2 (coche) - LIBRE\n");
 			}
 			else if (plaza1 == 0 && plaza2 == 1) {
-				printf("Plaza 1 - LIBRE\n");
-				printf("Plaza 2 - OCUPADA por %s\n", matricula2);
+				printf("Plaza 1 (moto) - LIBRE\n");
+				printf("Plaza 2 (coche) - OCUPADA por %s\n", matricula2);
 			}
 			else {
-				printf("Plaza 1 - OCUPADA por %s\n", matricula);
-				printf("Plaza 2 - OCUPADA por %s\n", matricula2);
+				printf("Plaza 1 (moto)- OCUPADA por %s\n", matricula);
+				printf("Plaza 2 (coche)- OCUPADA por %s\n", matricula2);
 			}
 			break;
 
