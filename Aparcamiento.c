@@ -3,7 +3,8 @@
 
 void main() {
 
-	char opcion, matricula[8], matricula2[8], plaza1 = 0, plaza2 = 0, opcion2;
+	char opcion, matricula[8], matricula2[8], plaza1 = 0, plaza2 = 0;
+	int opcion2;
 
 	while (1) {
 
@@ -12,7 +13,6 @@ void main() {
 		printf("Seleccione A para abandonar su plaza.\n");
 		printf("Seleccione E para ver el estado de su plaza.\n");
 		scanf_s("%c", &opcion, 1);
-		getchar();
 
 		system("cls");
 	
