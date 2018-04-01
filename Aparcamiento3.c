@@ -6,12 +6,12 @@
 struct aparcamiento {
 	int estado; // 0 - Libre / 1 - Ocupada
 	char tipo; // M - Moto / C - Coche
-	char matricula[8]; // Formato de la matrícula: NNNNLLL
+	char matricula[8]; 
 };
 void main() {
 
 	struct aparcamiento plaza1 = { 0, 'M' }, plaza2 = { 0, 'C' };
-	char usuario[8] = "GONZALO", contraseña[5] = "1234", usuario2[8], contraseña2[5];
+	char usuario[8] = "GONZALO", contraseÃ±a[5] = "1234", usuario2[8], contraseÃ±a2[5];
 	int i = 0, opcion2, x = 1;
 	char opcion, matricula3[8], opciontipo;
 
@@ -19,12 +19,12 @@ void main() {
 
 		printf("Nombre de usuario:\n");
 		scanf_s("%s", usuario2, 8);
-		printf("Contraseña:\n");
-		scanf_s("%s", contraseña2, 5);
+		printf("ContraseÃ±a:\n");
+		scanf_s("%s", contraseÃ±a2, 5);
 		system("cls");
 
-		if (strcmp(usuario, usuario2) == 0 && strcmp(contraseña, contraseña2) == 0) {
-			printf("Usuario y contraseña correctos.\n");
+		if (strcmp(usuario, usuario2) == 0 && strcmp(contraseÃ±a, contraseÃ±a2) == 0) {
+			printf("Usuario y contraseÃ±a correctos.\n");
 			getchar();
 
 			while (i == 0) {
@@ -168,7 +168,7 @@ void main() {
 			}
 		}
 		else {
-			printf("Nombre de usuario o contraseña incorrecto.\n");
+			printf("Nombre de usuario o contraseÃ±a incorrecto.\n");
 			x++;
 			system("pause");
 		}
